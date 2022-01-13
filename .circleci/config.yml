@@ -24,7 +24,7 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           name: Test 
-          command: dotnet test src/Core/ci-cd_service
+          command: dotnet test src/Core/
       - run:
           name: Build image
           command: dotnet build -c Release src/Core/ci-cd_service
