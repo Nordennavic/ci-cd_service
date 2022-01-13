@@ -44,6 +44,7 @@ jobs:
           command: |
             pwd
       - run:
+          working_directory: /root/project/
           name: Build docker image
           command: |
             ls
