@@ -41,23 +41,13 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Get pwd
-          command: |
-            pwd
-      - run:
           name: Build docker image
           command: |
-            ls
-            docker build -t redisservice:test .
-      - run:
-          name: Build docker image
-          command: |
-            ls
             docker build -t redisservice:test .
       - run:
           name: Login to docker hub
           command: |
-            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run:
           name: Push image
           command: |
