@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Build docker image
           command: |
+            ls
             docker build -t redisservice:test .
       - run:
           name: Login to docker hub
