@@ -43,6 +43,7 @@ jobs:
           command: |
             docker build -t redisservice:test .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            docker image tag redisservice:test $DOCKER_USER/redisservice:test
             docker image push $DOCKER_USER/redisservice:test
 
            
