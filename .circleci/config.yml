@@ -34,7 +34,7 @@ jobs:
     docker:
       - image: circleci/node:14.17.3-buster-browsers
         auth:
-          username: nordennavic
+          username: $DOCKER_USER
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
@@ -47,8 +47,9 @@ jobs:
       - run:
           name: Push image
           command: |
-              docker image tag redisservice:test nordennavic/redisservice:test
-              docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" && docker push nordennavic/redisservice:test
+              docker image tag redisservice:test $DOCKER_USER/redisservice:test
+              echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+              docker push $DOCKER_USER/redisservice:test
 
            
 
@@ -67,6 +68,8 @@ workflows:
             branches:
               only: main
       - deploy-image:
+          context:
+            - ci-cd_service
           requires: 
             - approve-deploy
           filters:
