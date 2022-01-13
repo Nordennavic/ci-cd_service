@@ -27,6 +27,11 @@ namespace RedisService.Controllers
             return StatusCode(200, "Vso ok");
         }
 
+        [HttpGet]
+        public ActionResult Test()
+        {
+            return StatusCode(200, "Vso tochno ok");
+        }
 
         [HttpPost]
         [Route("/teoInbound/universal")]
@@ -34,33 +39,5 @@ namespace RedisService.Controllers
         {
             return StatusCode(503, "Service currently unavailable");
         }
-
-        //[HttpGet]
-        //public async Task<string> GetByKey([FromQuery(Name = "key")] string key)
-        //{
-        //    using var client = redisManager.GetClient();
-        //    var value = client.GetValue(key);
-        //    return value;
-        //}
-
-        //[HttpGet]
-        //public async Task<string> DeleteByKey([FromQuery(Name = "key")] string key)
-        //{
-        //    using var client = redisManager.GetClient();
-        //    if (client.Remove(key))
-        //        return $"Value with key {key} successfully removed!";
-        //    return $"Value with key {key} Not Found.";
-        //}
-
-        //[HttpGet]
-        //public async Task<string> SearchByKey([FromQuery(Name = "pattern")] string pattern)
-        //{
-        //    using var client = redisManager.GetClient();
-        //    IList<string> keys = client.SearchKeys($"*{pattern}*");
-        //    var result = $"By pattern \"{pattern}\" {keys.Count} matches found: \n";
-        //    foreach (var key in keys) result += key + "\n";
-        //    return result;
-        //}
-
     }
 }
