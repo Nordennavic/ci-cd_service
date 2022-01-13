@@ -48,7 +48,7 @@ jobs:
           name: Push image
           command: |
               docker image tag redisservice:test nordennavic/redisservice:test
-              docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" hub.docker.com  && docker push nordennavic/redisservice:test
+              docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" && docker push nordennavic/redisservice:test
 
            
 
