@@ -42,6 +42,7 @@ jobs:
           name: Push image
           command: |
             docker build -f Dockerfile image --tag redisservice
+            docker image tag redisservice nordennavic/redisservice
             docker image push nordennavic/redisservice
 
            
