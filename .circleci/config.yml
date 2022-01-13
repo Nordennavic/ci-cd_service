@@ -61,10 +61,16 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - deploy-image:
+      - approve-deploy:
           type: approval
           requires: 
             - build-and-test
+          filters:
+            branches:
+              only: main
+      - deploy-image:
+          requires: 
+            - approve-deploy
           filters:
             branches:
               only: main
