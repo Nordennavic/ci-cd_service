@@ -34,8 +34,8 @@ jobs:
     docker:
       - image: circleci/node:14.17.3-buster-browsers
         auth:
-          username: $DOCKER_USER
-          password: $DOCKER_PASS
+          username: nordennavic
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - setup_remote_docker:
