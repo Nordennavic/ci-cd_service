@@ -20,10 +20,8 @@ jobs:
       # Then simply use the dotnet container as you'd expect and run your tests
       - run:
           # Update this line with the directory that contains your tests project file
-          working_directory: ~/ci-cd_service
           name: Test service
           command: |
-            envsubst < ~/ci-cd_service/Dockerfile_test.tmpl > Dockerfile_test
             docker build -f Dockerfile_test -- tag Dockerfile-test
       - run:
           name: Build image
