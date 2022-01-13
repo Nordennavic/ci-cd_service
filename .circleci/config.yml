@@ -32,7 +32,7 @@ jobs:
           command: dotnet build -c Release ./RedisService.sln
   deploy-image: 
     docker:
-      - image: cimg/base:2022.01
+      - image: circleci/node:14.17.3-buster-browsers
         auth:
           username: $DOCKER_USER
           password: $DOCKER_PASSWORD
