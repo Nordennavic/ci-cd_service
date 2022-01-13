@@ -23,7 +23,7 @@ jobs:
           working_directory: ~/
           name: Test service
           command: |
-            envsubst < Dockerfile_test.tmpl > Dockerfile_test
+            envsubst < ~/Dockerfile_test.tmpl > Dockerfile_test
             docker build -f Dockerfile_test -- tag Dockerfile-test
       - run:
           name: Build image
