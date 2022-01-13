@@ -35,7 +35,7 @@ jobs:
       - image: circleci/node:14.17.3-buster-browsers
         auth:
           username: $DOCKER_USER
-          password: $DOCKER_PASSWORD
+          password: $DOCKER_PASS
     steps:
       - checkout
       - setup_remote_docker:
@@ -47,6 +47,7 @@ jobs:
       - run:
           name: Push image
           command: |
+            echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
             docker image tag redisservice:test nordennavic/redisservice:test
             docker image push nordennavic/redisservice:test
 
