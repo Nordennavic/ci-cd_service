@@ -24,7 +24,9 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           name: Test 
-          command: dotnet test ./
+          command: |
+            dotnet test ./
+            pwd
       - run:
           name: Build solution
           command: dotnet build -c Release ./RedisService.sln
@@ -40,7 +42,7 @@ jobs:
       - run:
           name: Get pwd
           command: |
-            ls
+            pwd
       - run:
           name: Build docker image
           command: |
