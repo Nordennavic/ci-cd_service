@@ -24,10 +24,10 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           name: Test 
-          command: dotnet test src/Core/
+          command: dotnet test ./
       - run:
           name: Build image
-          command: dotnet build -c Release src/Core/ci-cd_service
+          command: dotnet build -c Release ./RedisService.sln
   deploy: 
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
