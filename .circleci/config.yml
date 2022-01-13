@@ -47,8 +47,8 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker image tag redisservice:test $DOCKER_USER/redisservice:test
-            docker image push $DOCKER_USER/redisservice:test
+            docker image tag redisservice:test ${DOCKER_USER}/redisservice:test
+            docker image push ${DOCKER_USER}/redisservice:test
 
            
 
