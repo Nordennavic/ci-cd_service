@@ -30,7 +30,7 @@ jobs:
           command: dotnet build -c Release ./RedisService.sln
   deploy-image: 
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:3.1
+      - image: cimg/base:2022.01
         auth:
           username: $DOCKER_USER
           password: $DOCKER_PASSWORD
