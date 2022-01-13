@@ -40,7 +40,6 @@ jobs:
       - run:
           name: Get pwd
           command: |
-            pwd
             ls
       - run:
           name: Build docker image
