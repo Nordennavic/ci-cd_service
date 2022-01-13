@@ -44,7 +44,6 @@ jobs:
           command: |
             pwd
       - run:
-          working_directory: ~/project/ci-cd_service
           name: Build docker image
           command: |
             ls
