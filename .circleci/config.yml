@@ -41,9 +41,9 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker build -t redisservice:latest .
+            docker build -t redisservice:test .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-            docker image push $DOCKER_USER/redisservice
+            docker image push $DOCKER_USER/redisservice:test
 
            
 
