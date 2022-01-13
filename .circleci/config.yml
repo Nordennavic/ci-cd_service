@@ -45,10 +45,6 @@ jobs:
           command: |
             docker build -t redisservice:test .
       - run:
-          name: Login to docker hub
-          command: |
-            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
-      - run:
           name: Push image
           command: |
             docker image tag redisservice:test $DOCKER_USER/redisservice:test
