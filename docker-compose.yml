@@ -7,20 +7,11 @@ services:
     networks:
        my-network:
           ipv4_address: 172.23.0.3
-  some.mongo:
-    image: mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=noSQLService
-      - MONGO_INITDB_ROOT_PASSWORD=password123
-
   RedisService:
     image: redis_service
     build:
       context: ./
-      dockerfile: ./RedisService/Dockerfile
+      dockerfile: .
     environment:  
       - RedisSection__RedisConnectionString=172.23.0.3:6379
       - RedisSection__RedisPassword=
