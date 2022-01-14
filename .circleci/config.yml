@@ -24,26 +24,32 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           name: Test 
-          command: dotnet test ./
+          command: |
+            dotnet test ./
+            pwd
       - run:
-          name: Build image
+          name: Build solution
           command: dotnet build -c Release ./RedisService.sln
-  deploy: 
+  deploy-image: 
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:3.1
+      - image: circleci/node:14.17.3-buster-browsers
         auth:
           username: $DOCKER_USER
-          password: $DOCKER_PASSWORD
+          password: $DOCKERHUB_PASSWORD
     steps:
+      - checkout
       - setup_remote_docker:
-          version: 19.03.13
           docker_layer_caching: true
+      - run:
+          name: Build docker image
+          command: |
+            docker build -t redisservice:test .
       - run:
           name: Push image
           command: |
-            docker build -t redisservice:latest .
-            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-            docker image push $DOCKER_USER/redisservice
+              docker image tag redisservice:test $DOCKER_USER/redisservice:test
+              echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+              docker push $DOCKER_USER/redisservice:test
 
            
 
@@ -54,10 +60,18 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - deploy:
+      - approve-deploy:
           type: approval
           requires: 
             - build-and-test
+          filters:
+            branches:
+              only: main
+      - deploy-image:
+          context:
+            - ci-cd_service
+          requires: 
+            - approve-deploy
           filters:
             branches:
               only: main
