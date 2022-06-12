@@ -43,4 +43,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/redisservice:latest
-          on: workflow_dispatch
