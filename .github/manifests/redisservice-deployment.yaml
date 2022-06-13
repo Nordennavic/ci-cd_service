@@ -27,7 +27,7 @@ spec:
       containers:
         - env:
             - name: redissection__redisconnectionstring
-              value: 172.17.0.6:6379
+              value: 10.233.90.3:6379
             - name: redissection__redispassword
           image: nordennavic/redisservice
           name: redisservice
