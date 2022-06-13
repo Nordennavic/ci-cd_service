@@ -47,5 +47,6 @@ jobs:
       - name: Deploy to kubernetes
         uses: danielr1996/kubectl-action@1.0.0
         with:
+          path: ./.github/manifests/
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          args: apply -f  ./.github/manifests/some-redis-service.yaml,./.github/manifests/some-redis-deployment.yaml,./.github/manifests/redisservice-service.yaml,./.github/manifests/redisservice-deployment.yaml,./.github/manifests/my-network-networkpolicy.yaml
+          args: apply -f  some-redis-service.yaml,some-redis-deployment.yaml,redisservice-service.yaml,redisservice-deployment.yaml,my-network-networkpolicy.yaml
