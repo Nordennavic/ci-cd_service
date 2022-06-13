@@ -1,20 +1,20 @@
 version: '3.8'
 services: 
-  some.redis:
+  some-redis:
     image: redis
     ports:
       - "6379:6379"
     networks:
        my-network:
           ipv4_address: 172.23.0.3
-  RedisService:
+  redisservice:
     image: redis_service
     build:
       context: ./
       dockerfile: .
     environment:  
-      - RedisSection__RedisConnectionString=172.23.0.3:6379
-      - RedisSection__RedisPassword=
+      - redissection__redisconnectionstring=172.23.0.3:6379
+      - redissection__redispassword=
     ports:
       - "7770:7770"
     networks:

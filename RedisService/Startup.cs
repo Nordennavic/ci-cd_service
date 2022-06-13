@@ -46,13 +46,6 @@ namespace RedisService
                 timeout: new TimeSpan(0,0,5),
                 failureStatus: HealthStatus.Degraded);
 
-
-            heals.AddMongoDb(mongoConnectionString,
-                mongoConnectionString,
-                failureStatus: HealthStatus.Degraded,
-                null,
-                timeout: new TimeSpan(0, 0, 5));
-
             services.AddSingleton<IRedisClientsManagerAsync>(c => new RedisManagerPool());
             services.AddOptions<MongoConf>().Bind(Configuration?.GetSection("MongoSection"));
             services.AddOptions<RedisConf>().Bind(Configuration?.GetSection("RedisSection"));
