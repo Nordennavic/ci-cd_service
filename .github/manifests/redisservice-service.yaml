@@ -13,7 +13,7 @@ spec:
   ports:
     - port: 7770
       targetPort: 7770
-      nodePort: 17770
+      nodePort: 30001
   selector:
     io.kompose.service: redisservice
 status:
