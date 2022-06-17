@@ -9,9 +9,9 @@ metadata:
     io.kompose.service: redisservice
   name: redisservice
 spec:
+  type: NodePort
   ports:
-    - name: "7770"
-      port: 7770
+    - port: 7770
       targetPort: 7770
       nodePort: 17770
   selector:
